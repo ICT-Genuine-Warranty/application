@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import {useState} from 'react'
+import Main from './pages/main.js';
+import StatusBar from './components/statusBar';
 import './App.css';
 
 function App() {
+  const [status, setStatus] = useState("main");
+  const [itemCode,setItemCode] = useState("");
+  const [tradeCode, setTradeCode] = useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <StatusBar status={status} setStatus={setStatus} itemCode={itemCode} setItemCode={setItemCode}/>
+        <div className='components'>
+          <Main status={status} setStatus={setStatus} tradeCode={tradeCode} setTradeCode={setTradeCode} itemCode={itemCode}/>
+        </div>
+
     </div>
   );
 }
