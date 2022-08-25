@@ -6,7 +6,7 @@ function SignPage ({userInfo,setUserInfo,setStatus}){
     const [isSignUp,setIsSignUp] = useState(false);
 
     return(
-        <div style={{ width:'500px', marginTop:'80px'}}>
+        <div style={{ width:'500px', marginTop:'200px'}}>
             {isSignUp===false ? <SignIn setUserInfo={setUserInfo} setIsSignUp={setIsSignUp} setStatus={setStatus}/>:<SignUp setIsSignUp={setIsSignUp}/>}
         </div>
     )

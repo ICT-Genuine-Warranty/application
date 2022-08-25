@@ -10,11 +10,11 @@
         "comments":{
             "sellersComment":{
                 "owner":2,
-                "commentURI":"~"
+                "commentId":3
             },
             "buyersComments":{
                 "owner":3,
-                "commentURI":"!!"
+                "commentId":4
             }
         }
     },
@@ -29,11 +29,11 @@
         "comments":{
             "sellersComment":{
                 "owner":1,
-                "commentURI":"~"
+                "commentId":1
             },
             "buyersComments":{
                 "owner":2,
-                "commentURI":"!!"
+                "commentId":2
             }
         }
     }

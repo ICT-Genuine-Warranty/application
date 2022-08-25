@@ -9,30 +9,38 @@ function Search({setStatus, itemInfo, setItemInfo}){
     const [modalData,setModalData] = useState({});
 
     async function search(){
-      const data = { itemCode:itemCode };
-      fetch('http://localhost:3065/search/', {
+      await fetch('http://localhost:3065/item/getInfo', {
         method: 'POST', // 또는 'PUT'
         headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        setStatus('item')
-      })
-      .catch((error) => {
-        setModalData({
-          title:"에러",
-          content:"코드를 정확히 입력해주세요."
+        body: JSON.stringify({ id: itemCode }),
         })
-        setShowModal(true)
-        return;
-      });
+        .then((response) => response.json())
+        .then((el) => {
+          console.log(el)
+        setItemInfo(el);
+        setStatus("item")
+        })
+        .catch((error) => {
+          setModalData({
+            title:"오류",
+            content:"제품코드를 정확히 입력하세요"
+          })
+          setShowModal(true);
+        });
+    }
+
+    function clickCamera(){
+       setModalData({
+            title:"미구현",
+            content:"구현 예정입니다."
+          })
+          setShowModal(true);
     }
 
     return(
-        <Alert className='Search' style={{backgroundColor:'#BCABC2', position : 'fixed', width:'500px'}}>
+        <Alert className='Search' style={{backgroundColor:'#BCABC2', borderColor:"#BCABC2", position : 'fixed', width:'500px'}}>
             <div className='text' style={{display:'flex', marginBottom:'10px', color:"#000000"}}>
             제품코드를 직접입력하거나
             QR코드를 스캔하세요.
@@ -47,10 +55,10 @@ function Search({setStatus, itemInfo, setItemInfo}){
                     placeholder="aX9asdnVa"
                   />
             <div className='SearchButtons' style={{marginTop:'15px'}}>
-                <Button variant="light" style={{marginLeft:'10px', marginRight:'10px'}}>
+                <Button variant="light" style={{marginLeft:'10px', marginRight:'10px'}} onClick={()=>{clickCamera()}}>
                     <img src={Camera} height={'20px'}/>
                 </Button>
-                <Button variant="light" style={{marginLeft:'10px', marginRight:'10px'}} onClick={()=>{setStatus("item")}}>
+                <Button variant="light" style={{marginLeft:'10px', marginRight:'10px'}} onClick={()=>{search();}}>
                     검색
                 </Button>
             </div>

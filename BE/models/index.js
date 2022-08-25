@@ -10,10 +10,11 @@ const sequelize = new Sequelize( // node와 mysql을 연결(sequelize는 내부�
   config
 );
 
-db.Image = require("./image")(sequelize, Sequelize);
 db.Comment = require("./comment")(sequelize, Sequelize);
 db.User = require("./user")(sequelize, Sequelize);
 db.Item = require("./item")(sequelize, Sequelize);
+db.ItemInfo = require("./itemInfo")(sequelize, Sequelize);
+db.Mempool = require("./mempool")(sequelize, Sequelize);
 
 Object.keys(db).forEach((modelName) => {
   // 위에서 각각 정의한 model의 관계를 설정
@@ -23,6 +24,5 @@ Object.keys(db).forEach((modelName) => {
 });
 
 db.sequelize = sequelize;
-db.Sequelize = Sequelize;
 
 module.exports = db;

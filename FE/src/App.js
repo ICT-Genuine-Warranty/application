@@ -12,8 +12,9 @@ function App() {
 
   return (
     <div className="App">
-        <Header setStatus={setStatus} userInfo={userInfo} setUserInfo={setUserInfo}/>
+      <Header setStatus={setStatus} userInfo={userInfo} setUserInfo={setUserInfo}/>
         <StatusBar status={status} setStatus={setStatus} itemInfo={itemInfo} setItemInfo={setItemInfo}/>
+        
         <div className='components'>
           <Main userInfo={userInfo} setUserInfo={setUserInfo} status={status} setStatus={setStatus} tradeInfos={tradeInfos} setTradeInfos={setTradeInfos} itemInfo={itemInfo}/>
         </div>

@@ -1,12 +1,12 @@
 import {Alert,Button} from 'react-bootstrap'
 
-function ItemInfoBar ({itemInfo,setitemInfo,setStatus}) {
+function ItemInfoBar ({itemInfo,setItemInfo,setStatus}) {
     return(
-         <Alert className='Search' style={{backgroundColor:'#BCABC2', position : 'fixed', width:'500px'}}>
+         <Alert className='Search' style={{backgroundColor:'#BCABC2',borderColor:"#BCABC2", position : 'fixed', width:'500px'}}>
             <div style={{display:"flex"}}>
             <a style={{display:'flex', color:'#646464'}}>현재 조회중인 제품</a>
              <div style={{paddingLeft:"5px",paddingRight:"5px", borderRadius:'5px', marginLeft:'305px', marginRight:'20px', backgroundColor:'#A797AD', color:'#000000', fontSize:"small"}}
-             onClick={()=>{setitemInfo({});setStatus("main")}}>
+             onClick={()=>{setItemInfo({});setStatus("main")}}>
                 &lt;
             </div>
             </div>

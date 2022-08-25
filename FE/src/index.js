@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+     <div style={{marginTop:'0px', backgroundColor:"#ffffff", width:'100%', height:"200px", position : 'fixed',zIndex:"0"}}></div>
     <App />
   </React.StrictMode>
 );

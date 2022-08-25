@@ -1,36 +1,7 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
-const { User, Post, Image, Comment } = require("../models");
-const passport = require("passport");
+const { User } = require("../models");
 
 const router = express.Router();
-
-router.get("/", async (req, res, next) => {
-  // GET /user
-  // console.log(req.headers);
-  try {
-    // 로그인 여부 판단
-    if (req.user) {
-      const fullUserWithoutPassword = await User.findOne({
-        where: { id: req.user.id },
-        attributes: {
-          exclude: ["password"],
-        },
-        include: [
-          { model: User, as: "Followers", attributes: ["id", "name"] },
-          { model: User, as: "Followings", attributes: ["id", "name"] },
-          { model: Post, attributes: ["id"] },
-        ],
-      });
-      res.status(200).json(fullUserWithoutPassword);
-    } else {
-      res.status(200).json(null);
-    }
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
 
 router.post("/login", (req, res, next) => {
       console.log(req.body)
@@ -71,6 +42,7 @@ router.post("/", async (req, res, next) => {
       identity: req.body.id,
       name: req.body.name,
       password: req.body.password,
+      isMaker: req.body.isMaker
     });
     res.status(201).json("ok"); // 200 : 성공함, 201 : 잘 생성됨(더 구체적인 의미).
   } catch (error) {

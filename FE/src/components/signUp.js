@@ -9,6 +9,7 @@ function SignUp({userId,SetUserId,setIsSignUp}){
     const [name, setName] = useState("");
     const [showModal,setShowModal] = useState(false);
     const [modalData,setModalData] = useState({});
+    const [isMaker,setIsMaker] = useState(false);
 
     async function signUp(){
       if(name===""||id==""||pw===""||pw!==pwCheck){
@@ -19,7 +20,8 @@ function SignUp({userId,SetUserId,setIsSignUp}){
         setShowModal(true)
         return;
       }
-      const data = { name: name, id:id, password:pw };
+      const ismaker = isMaker==false ? 0 : 1;
+      const data = { name: name, id:id, password:pw, isMaker:ismaker};
       fetch('http://localhost:3065/user/', {
         method: 'POST', // 또는 'PUT'
         headers: {
@@ -65,6 +67,13 @@ function SignUp({userId,SetUserId,setIsSignUp}){
       {pwCheck!==pw ? <Form.Text style={{display:"flex", color:"#ff0000"}}>
           비밀번호가 일치하지 않습니다.
         </Form.Text>:null}
+        <div style={{display:"flex"}}>
+        <Form.Check 
+        type="switch"
+        id="custom-switch"
+        onChange={()=>{setIsMaker(!isMaker)}}
+      /><div>{isMaker==false ? "일반사용자" : "기업"}</div></div>
+
       <Button onClick={()=>{signUp()}} variant="primary" type="button" style={{marginLeft:"10px"}}>
         회원가입
       </Button>

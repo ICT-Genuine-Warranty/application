@@ -1,31 +1,31 @@
 module.exports = (sequelize, DataTypes) => {
   // model(테이블) 이름인 Post가 자동으로 소문자복수형이 되어 mysql에 저장된다.
-  const Item = sequelize.define(
-    "Item",
+  const Mempool = sequelize.define(
+    "Mempool",
     // 첫 번째 인자: 스키마
     {
       itemId: {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-      maked: {
-        type: DataTypes.STRING(30),
+      platform: {
+        type: DataTypes.INTEGER,
         allowNull: true,
       },
-      tradeNum: {
+      price: {
         type: DataTypes.INTEGER,
+        allowNull: true,
+      },  
+      comment: {
+        type: DataTypes.TEXT,
         allowNull: false, // 필수
       },
-      firstSeller: {
-        type: DataTypes.INTEGER,
+      imgsrc: {
+        type: DataTypes.STRING(200),
         allowNull: true,
       },
-      owner: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      imageSrc: {
-        type: DataTypes.STRING(200),
+      buyerId: {
+        type: DataTypes.STRING(30),
         allowNull: true,
       },
     },
@@ -35,5 +35,5 @@ module.exports = (sequelize, DataTypes) => {
       collate: "utf8mb4_general_ci", // 한글 저장
     }
   );
-  return Item;
+  return Mempool;
 };

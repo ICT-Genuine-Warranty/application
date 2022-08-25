@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(100),
         allowNull: false, // 필수
       },
+      isMaker: {
+        type: DataTypes.INTEGER,
+        allowNull: false, // 필수
+      },
     },
     // 두 번째 인자: 세팅값
     {

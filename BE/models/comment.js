@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false, // 필수
       },
+      imageSrc: {
+        type: DataTypes.STRING(200),
+        allowNull: false, // 필수
+      },
     },
     // 두 번째 인자: 세팅값
     {
